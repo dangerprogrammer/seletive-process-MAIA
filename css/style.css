@@ -73,6 +73,9 @@ body .main-container article section div h1 {
   font-size: 1.8em;
   margin-bottom: 0.5em;
 }
+body .main-container article section div p {
+  text-align: justify;
+}
 body .main-container article footer {
   position: relative;
   display: flex;
