@@ -135,7 +135,7 @@ body .main-container .background-container span {
   position: absolute;
   height: 0.5em;
   width: 0.5em;
-  top: 100%;
+  top: 0;
   left: var(--x);
   display: flex;
   justify-content: center;
@@ -147,9 +147,9 @@ body .main-container .background-container span::before {
   width: 50%;
   left: 50%;
   z-index: 0;
-  translate: -50%;
+  translate: -50% -100%;
   height: var(--size);
-  background: linear-gradient(#0ac, #0a8 80%, transparent);
+  background: linear-gradient(transparent, #0a8 20%, #0ac);
 }
 body .main-container .background-container span::after {
   content: "";
@@ -191,7 +191,7 @@ body .text-appear.typing::after {
 
 @keyframes animateNeuron {
   to {
-    top: calc(var(--size) * -1);
+    top: calc(var(--size) + 100%);
   }
 }
 @keyframes animateType {

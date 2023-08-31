@@ -148,7 +148,7 @@ body {
                 $size: .5em;
                 height: $size;
                 width: $size;
-                top: 100%;
+                top: 0;
                 left: var(--x);
                 display: flex;
                 justify-content: center;
@@ -160,9 +160,9 @@ body {
                     width: 50%;
                     left: 50%;
                     z-index: 0;
-                    translate: -50%;
+                    translate: -50% -100%;
                     height: var(--size);
-                    background: linear-gradient(#0ac, #0a8 80%, transparent);
+                    background: linear-gradient(transparent, #0a8 20%, #0ac);
                 }
 
                 &::after {
@@ -216,7 +216,7 @@ body {
 
 @keyframes animateNeuron {
     to {
-        top: calc(var(--size) * -1);
+        top: calc(var(--size) + 100%);
     }
 }
 
