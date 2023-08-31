@@ -15,13 +15,13 @@ body {
   font-size: clamp(0.8rem, 1.5vw, 1.05rem);
   overflow-x: hidden;
 }
-body main {
+body .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
 }
-body main header {
+body .main-container header {
   position: sticky;
   top: 0;
   width: 100%;
@@ -40,14 +40,14 @@ body main header {
   z-index: 100;
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
-  background: rgba(5, 17, 32, 0.7529411765);
+  background: rgba(5, 17, 32, 0.6274509804);
   transition-duration: 0.25s;
 }
-body main header .header-img {
+body .main-container header .header-img {
   max-height: 3em;
   scale: 2;
 }
-body main article {
+body .main-container article {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -55,41 +55,41 @@ body main article {
   -moz-column-gap: 5vh;
        column-gap: 5vh;
 }
-body main article section, body main article footer {
+body .main-container article section, body .main-container article footer {
   margin: 0 10vw;
 }
-body main article section {
+body .main-container article section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   gap: 5em;
 }
-body main article section div {
+body .main-container article section div {
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
-body main article section div h1 {
+body .main-container article section div h1 {
   font-family: "Varela Round";
   font-size: 1.8em;
   margin-bottom: 0.5em;
 }
-body main article footer {
+body .main-container article footer {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-body main article footer .links {
+body .main-container article footer .links {
   width: 100%;
   display: grid;
   gap: 1em;
 }
-body main article footer .links li {
+body .main-container article footer .links li {
   list-style: none;
   display: flex;
   align-items: center;
 }
-body main article footer .links li a {
+body .main-container article footer .links li a {
   position: relative;
   height: 100%;
   width: 100%;
@@ -100,10 +100,10 @@ body main article footer .links li a {
   border-radius: 1rem;
   font-weight: 700;
 }
-body main article footer .links li a::before, body main article footer .links li a::after {
+body .main-container article footer .links li a::before, body .main-container article footer .links li a::after {
   content: attr(data-text);
 }
-body main article footer .links li a::after {
+body .main-container article footer .links li a::after {
   position: absolute;
   padding: 1em 2em;
   top: 0;
@@ -117,9 +117,50 @@ body main article footer .links li a::after {
           clip-path: circle(0.7em at 50% 0%);
   transition: 0.5s;
 }
-body main article footer .links li a:hover::after {
+body .main-container article footer .links li a:hover::after {
   -webkit-clip-path: circle(100% at 50% 50%);
           clip-path: circle(100% at 50% 50%);
+}
+body .main-container .background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0.4;
+  overflow: hidden;
+}
+body .main-container .background-container span {
+  position: absolute;
+  height: 0.5em;
+  width: 0.5em;
+  top: 100%;
+  left: var(--x);
+  display: flex;
+  justify-content: center;
+  animation: animateNeuron var(--duration) linear forwards;
+}
+body .main-container .background-container span::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  z-index: 0;
+  translate: -50%;
+  height: var(--size);
+  background: linear-gradient(#0ac, #0a8 80%, transparent);
+}
+body .main-container .background-container span::after {
+  content: "";
+  position: absolute;
+  height: 0.5em;
+  width: 0.5em;
+  top: 0;
+  left: 0;
+  scale: 1.2;
+  border-radius: 50%;
+  background: white;
 }
 body [data-show] {
   position: relative;
@@ -148,6 +189,11 @@ body .text-appear.typing::after {
   animation: animateType 0.4s steps(2) infinite alternate;
 }
 
+@keyframes animateNeuron {
+  to {
+    top: calc(var(--size) * -1);
+  }
+}
 @keyframes animateType {
   0% {
     opacity: 0;

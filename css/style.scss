@@ -16,7 +16,7 @@ body {
     font-size: clamp(.8rem, 1.5vw, 1.05rem);
     overflow-x: hidden;
 
-    main {
+    .main-container {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -38,7 +38,7 @@ body {
             gap: 1.5em;
             z-index: 100;
             backdrop-filter: blur(2px);
-            background: #051120c0;
+            background: #051120a0;
             transition-duration: .25s;
 
             .header-img {
@@ -131,6 +131,53 @@ body {
                 }
             }
         }
+
+        .background-container {
+            position: absolute;
+            // z-index: 10;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            pointer-events: none;
+            opacity: .4;
+            overflow: hidden;
+
+            span {
+                position: absolute;
+                $size: .5em;
+                height: $size;
+                width: $size;
+                top: 100%;
+                left: var(--x);
+                display: flex;
+                justify-content: center;
+                animation: animateNeuron var(--duration) linear forwards;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 50%;
+                    left: 50%;
+                    z-index: 0;
+                    translate: -50%;
+                    height: var(--size);
+                    background: linear-gradient(#0ac, #0a8 80%, transparent);
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    height: $size;
+                    width: $size;
+                    top: 0;
+                    left: 0;
+                    scale: 1.2;
+                    border-radius: 50%;
+                    background: white;
+                }
+            }
+        }
     }
 
     [data-show] {
@@ -164,6 +211,12 @@ body {
                 animation: animateType .4s steps(2) infinite alternate;
             }
         }
+    }
+}
+
+@keyframes animateNeuron {
+    to {
+        top: calc(var(--size) * -1);
     }
 }
 
