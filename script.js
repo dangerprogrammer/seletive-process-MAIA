@@ -17,11 +17,11 @@ allDataShow.forEach((dataShow, ind) => {
         textAppear.classList.remove('typing');
         textAppear.classList.remove('text-appear');
         dataShow.removeChild(textAppear);
-    }, textArray.length * speed + delayTime);
+    }, textArray.length * speed + delayTime + (ind == allDataShow.length - 1 ? 1e3 : 0));
 
     textAppear.classList.add('text-appear');
 
     dataShow.appendChild(textAppear);
 
-    // delayTime += (length * speed) / 2;
+    delayTime += length * speed;
 });
