@@ -1,9 +1,11 @@
 const allDataShow = [...document.querySelectorAll('[data-show]')];
 
+console.log(allDataShow);
+
 let delayTime = 0, speed = 2e1;
 allDataShow.forEach((dataShow, ind) => {
     const { innerText } = dataShow, textAppear = document.createElement('span'),
-        siblings = [...dataShow.children], { length } = innerText, textArray = [...innerText];
+        { length } = innerText, textArray = [...innerText];
 
     setTimeout(() => textAppear.classList.add('typing'), delayTime);
 
