@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Varela+Round&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Poppins;
+  background: #051120;
+  color: #eee;
+  font-size: clamp(0.8rem, 1.5vw, 1.05rem);
+  overflow-x: hidden;
+}
+body main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+body main header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 6vw;
+  padding-top: 4vh;
+  font-family: "Varela Round";
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  border-bottom: 2px solid transparent;
+  gap: 1.5em;
+  z-index: 100;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  background: rgba(5, 17, 32, 0.7529411765);
+  transition-duration: 0.25s;
+}
+body main header .header-img {
+  max-height: 3em;
+  scale: 2;
+}
+body main article {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-around;
+  -moz-column-gap: 5vh;
+       column-gap: 5vh;
+}
+body main article section, body main article footer {
+  margin: 0 10vw;
+}
+body main article section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  gap: 5em;
+}
+body main article section div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+body main article section div h1 {
+  font-family: "Varela Round";
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+body main article footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main article footer .links {
+  width: 100%;
+  display: grid;
+  gap: 1em;
+}
+body main article footer .links li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+body main article footer .links li a {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: rgba(34, 34, 34, 0.3333333333);
+  padding: 1em 2em;
+  text-decoration: none;
+  color: #eee;
+  border-radius: 1rem;
+  font-weight: 700;
+}
+body main article footer .links li a::before, body main article footer .links li a::after {
+  content: attr(data-text);
+}
+body main article footer .links li a::after {
+  position: absolute;
+  padding: 1em 2em;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: #ddd;
+  color: #112;
+  border-radius: 1rem;
+  pointer-events: none;
+  -webkit-clip-path: circle(0.7em at 50% 0%);
+          clip-path: circle(0.7em at 50% 0%);
+  transition: 0.5s;
+}
+body main article footer .links li a:hover::after {
+  -webkit-clip-path: circle(100% at 50% 50%);
+          clip-path: circle(100% at 50% 50%);
+}
+body [data-show] {
+  position: relative;
+  line-height: 1.4em;
+}
+body [data-show]:has(.text-appear) > *:not(.text-appear) {
+  pointer-events: none;
+  opacity: 0;
+}
+body .text-appear {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+body .text-appear::after {
+  content: "";
+  position: absolute;
+  height: 1.4em;
+  width: 0.4em;
+  translate: 0.15em;
+  background: currentColor;
+  display: none;
+}
+body .text-appear.typing::after {
+  display: inline;
+  animation: animateType 0.4s steps(2) infinite alternate;
+}
+
+@keyframes animateType {
+  0% {
+    opacity: 0;
+  }
+  50%, 100% {
+    opacity: 1;
+  }
+}
+@media screen and (min-width: 64rem) {
+  .links {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 40rem) and (max-width: calc(64rem - 1px)) {
+  .links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: calc(40rem - 1px)) {
+  .links {
+    grid-template-columns: 1fr;
+  }
+}/*# sourceMappingURL=style.css.map */
