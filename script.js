@@ -23,21 +23,21 @@ allDataShow.forEach((dataShow, ind) => {
     delayTime += length * speed;
 });
 
-generateLines();
+generateLines(!0);
 
-function generateLines() {
+function generateLines(firstRender = !1) {
     const { innerWidth } = window, numLines = innerWidth / 1e2, bgContainer = document.querySelector('.background-container');
 
     if (bgContainer.children.length >= numLines) return;
 
-    for (let i = 0; i < numLines - bgContainer.children.length; i++) generateLine(randomNumber({}) * 5e3);
+    for (let i = 0; i < numLines - bgContainer.children.length; i++) generateLine(firstRender ? 1e3 + randomNumber({}) * 5e3 : 0);
 };
 
 function generateLine(timeStart = 0) {
     const bgContainer = document.querySelector('.background-container'), newLine = document.createElement('span'),
-        [rX, rSize] = randomNumbers({}, { min: 15, max: 30 }), duration = rSize * 5e2;
+        [rX, rSize] = randomNumbers({ max: 5 }, { min: 15, max: 30 }), duration = rSize * 5e2;
 
-    newLine.style.setProperty('--x', `${rX * 100}%`);
+    newLine.style.setProperty('--x', `${rX * 20}%`);
     newLine.style.setProperty('--size', `${rSize}vh`);
     newLine.style.setProperty('--duration', `${duration}ms`);
     newLine.style.setProperty('animation-delay', `${timeStart}ms`);
