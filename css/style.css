@@ -135,7 +135,7 @@ body .main-container .background-container span {
   position: absolute;
   height: 0.5em;
   width: 0.5em;
-  top: 0;
+  top: -1em;
   left: var(--x);
   display: flex;
   justify-content: center;

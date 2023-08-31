@@ -148,7 +148,7 @@ body {
                 $size: .5em;
                 height: $size;
                 width: $size;
-                top: 0;
+                top: calc($size * -2);
                 left: var(--x);
                 display: flex;
                 justify-content: center;
