@@ -35,7 +35,6 @@ body .main-container header {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  border-bottom: 2px solid transparent;
   gap: 1.5em;
   z-index: 100;
   -webkit-backdrop-filter: blur(2px);
@@ -50,12 +49,12 @@ body .main-container header .header-img {
 body .main-container article {
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex-grow: 1;
   justify-content: space-around;
-  -moz-column-gap: 5vh;
-       column-gap: 5vh;
+  gap: 5vh;
 }
-body .main-container article section, body .main-container article footer {
+body .main-container article section, body .main-container article footer, body .main-container article button {
   margin: 0 10vw;
 }
 body .main-container article section {
@@ -123,6 +122,48 @@ body .main-container article footer .links li a::after {
 body .main-container article footer .links li a:hover::after {
   -webkit-clip-path: circle(100% at 50% 50%);
           clip-path: circle(100% at 50% 50%);
+}
+body .main-container article button {
+  position: sticky;
+  bottom: 0;
+  font-size: 1.4em;
+  padding: 0.5em 2vw;
+  max-width: 21em;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+body .main-container article button a {
+  position: relative;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  background: rgba(5, 17, 32, 0.6274509804);
+  background: none;
+  border: 2px solid #eee;
+  padding: 1em 2vw;
+  max-width: 21em;
+  width: 100%;
+  border-radius: 10em;
+  filter: drop-shadow(0 0.1em 0.5rem black);
+  outline: none;
+  color: #eee;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: 0.35s;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+}
+body .main-container article button a:hover {
+  letter-spacing: 0.25em;
+  filter: drop-shadow(0 0 0.5rem #eee);
+  background: #eee;
+  border-color: #eee;
+  color: black;
 }
 body .main-container .background-container {
   position: absolute;
