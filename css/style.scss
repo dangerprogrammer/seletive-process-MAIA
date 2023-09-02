@@ -54,25 +54,34 @@ body {
             justify-content: space-around;
             gap: 5vh;
 
+            h1 {
+                font-family: 'Varela Round';
+                font-size: 1.8em;
+                margin-bottom: .5em;
+            }
+
             section, footer, button {
                 margin: 0 10vw;
             }
 
             section {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
                 gap: 5em;
 
-                div {
+                &:not([class]) {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+                }
+
+                &.column {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5em;
+                }
+
+                div:not([class]) {
                     display: flex;
                     flex-direction: column;
                     gap: 1em;
-
-                    h1 {
-                        font-family: 'Varela Round';
-                        font-size: 1.8em;
-                        margin-bottom: .5em;
-                    }
 
                     p {
                         text-align: justify;
@@ -181,8 +190,8 @@ body {
         }
 
         .background-container {
-            position: absolute;
-            // z-index: 10;
+            position: fixed;
+            z-index: 10;
             top: 0;
             left: 0;
             height: 100%;
@@ -257,6 +266,29 @@ body {
             &::after {
                 display: inline;
                 animation: animateType .4s steps(2) infinite alternate;
+            }
+        }
+    }
+
+    .list-categories {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 1em;
+
+        & > * {
+            border: 2px solid #eee2;
+            padding: 1em 2em;
+            width: 18em;
+            max-width: 40em;
+            border-radius: 1em;
+            flex-shrink: 0;
+            flex-grow: 1;
+
+            p {
+                text-align: start !important;
             }
         }
     }

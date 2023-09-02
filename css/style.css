@@ -54,25 +54,32 @@ body .main-container article {
   justify-content: space-around;
   gap: 5vh;
 }
-body .main-container article section, body .main-container article footer, body .main-container article button {
-  margin: 0 10vw;
-}
-body .main-container article section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  gap: 5em;
-}
-body .main-container article section div {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-body .main-container article section div h1 {
+body .main-container article h1 {
   font-family: "Varela Round";
   font-size: 1.8em;
   margin-bottom: 0.5em;
 }
-body .main-container article section div p {
+body .main-container article section, body .main-container article footer, body .main-container article button {
+  margin: 0 10vw;
+}
+body .main-container article section {
+  gap: 5em;
+}
+body .main-container article section:not([class]) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+}
+body .main-container article section.column {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+}
+body .main-container article section div:not([class]) {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+body .main-container article section div:not([class]) p {
   text-align: justify;
 }
 body .main-container article footer {
@@ -166,7 +173,8 @@ body .main-container article button a:hover {
   color: black;
 }
 body .main-container .background-container {
-  position: absolute;
+  position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
   height: 100%;
@@ -231,6 +239,26 @@ body .text-appear::after {
 body .text-appear.typing::after {
   display: inline;
   animation: animateType 0.4s steps(2) infinite alternate;
+}
+body .list-categories {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1em;
+}
+body .list-categories > * {
+  border: 2px solid rgba(238, 238, 238, 0.1333333333);
+  padding: 1em 2em;
+  width: 18em;
+  max-width: 40em;
+  border-radius: 1em;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+body .list-categories > * p {
+  text-align: start !important;
 }
 
 @keyframes animateNeuron {

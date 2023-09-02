@@ -1,20 +1,21 @@
-const allDataShow = [...document.querySelectorAll('[data-show]')];
+const allDataShow = [...document.querySelectorAll('[data-show]')], hasTogether = allDataShow.find(({ dataset }) => typeof dataset.together != 'undefined');
 
 let delayTime = 0, speed = 2e1;
 allDataShow.forEach((dataShow, ind) => {
-    const { innerText } = dataShow, textAppear = document.createElement('span'), { length } = innerText, textArray = [...innerText];
+    const { innerText, dataset } = dataShow, textAppear = document.createElement('span'), { length } = innerText, textArray = [...innerText],
+        prevDelayTime = typeof dataset.together == 'undefined' ? delayTime : 0;
 
-    setTimeout(() => textAppear.classList.add('typing'), delayTime);
+    setTimeout(() => textAppear.classList.add('typing'), prevDelayTime);
 
     textArray.forEach((letter, ind) => {
-        setTimeout(() => textAppear.innerHTML = innerText.slice(0, ind + 1), ind * speed + delayTime)
+        setTimeout(() => textAppear.innerHTML = innerText.slice(0, ind + 1), ind * speed + prevDelayTime)
     });
 
     setTimeout(() => {
         textAppear.classList.remove('typing');
         textAppear.classList.remove('text-appear');
         dataShow.removeChild(textAppear);
-    }, textArray.length * speed + delayTime + (ind == allDataShow.length - 1 ? 1e3 : 0));
+    }, textArray.length * speed + prevDelayTime + ((ind == allDataShow.length - 1 && !hasTogether) ? 1e3 : 0));
 
     textAppear.classList.add('text-appear');
 
